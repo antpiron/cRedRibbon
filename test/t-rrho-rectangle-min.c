@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #include "ale.h"
-#include "rrho.h"
+#include "cRedRibbon.h"
 
 int
 main(int argc, char *argv[argc])

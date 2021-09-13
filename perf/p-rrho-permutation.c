@@ -7,8 +7,8 @@
 
 #include <omp.h>
 
-#include "ale.h"
-#include "rrho.h"
+#include <ale.h>
+#include "cRedRibbon.h"
 
 int
 main(int argc, char *argv[argc])

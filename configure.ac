@@ -7,7 +7,7 @@ AM_INIT_AUTOMAKE
 AM_SILENT_RULES([yes])
 
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_SRCDIR([src/rrho.h])
+AC_CONFIG_SRCDIR([src/cRedRibbon.h])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.

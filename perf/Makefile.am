@@ -1,4 +1,4 @@
-LDADD = ../src/librrho.la
+LDADD = ../src/libredribbon.la
 AM_LDFLAGS = -static
 AM_CFLAGS = -I$(top_srcdir)/src
 

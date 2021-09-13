@@ -2,11 +2,11 @@ AM_CFLAGS = $(OPENMP_CFLAGS) -Wall -Wextra -I$(top_srcdir) $(INCLUDE_R_HEADER_PA
 AM_LFLAGS=-R
 
 
-LIBRARY_SOURCES=rrho.c rrho.h correlation.c
+LIBRARY_SOURCES=cRedRibbon.c cRedRibbon.h correlation.c
 
-lib_LTLIBRARIES = librrho.la 
+lib_LTLIBRARIES = libredribbon.la 
 #noinst_lib_LTLIBRARIES=libale-debug.la
-librrho_la_SOURCES = $(LIBRARY_SOURCES)
-include_HEADERS = rrho.h
+libredribbon_la_SOURCES = $(LIBRARY_SOURCES)
+include_HEADERS = cRedRibbon.h
 
 

@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #include "ale.h"
-#include "rrho.h"
+#include "cRedRibbon.h"
 
 #define SIZE (2000)
 #define POINTS (256)

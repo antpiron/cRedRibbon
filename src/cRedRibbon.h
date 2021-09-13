@@ -1,5 +1,5 @@
-#ifndef __RRHO_H
-#define __RRHO_H
+#ifndef __CREDRIBBON_H
+#define __CREDRIBBON_H
 
 #include <stddef.h>
 #include <ale.h>

@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "ale.h"
-#include "rrho.h"
+#include <ale.h>
+#include "cRedRibbon.h"
 
 void
 test_count(size_t n, size_t index[n])
