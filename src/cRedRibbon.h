@@ -105,8 +105,10 @@ int rrho_permutation_generic(struct rrho *rrho, size_t i, size_t j, size_t ilen,
 			     void *params, struct stats_permutation *permutation, int mode, int direction, int algorithm,
 			     size_t niter, long double pvalue, struct rrho_permutation_result *res);
 
-int rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize_t nbr_tested, ssize_t index[m], double beta[2][m]);
-int rrho_expression_prediction(size_t m, size_t n, double mat[m][n], ssize_t nbr_tested, ssize_t index[m], double beta[2][m]);
+int rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize_t nbr_tested,
+					 ssize_t index[m], double beta[2][m], double r[m]);
+int rrho_expression_prediction(size_t m, size_t n, double mat[m][n], ssize_t nbr_tested,
+			       ssize_t index[m], double beta[2][m], double r[m]);
 int rrho_ldfit_prediction(size_t m, double half, double pval[m], size_t position[m], ssize_t index[m]);
 // inline
 

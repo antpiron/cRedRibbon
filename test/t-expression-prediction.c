@@ -13,11 +13,12 @@ main(int argc, char *argv[argc])
   double (*expr)[n] = malloc(sizeof(double) * m * n);
   ssize_t *index = malloc(sizeof(ssize_t) * m );
   double (*beta)[m] = malloc(sizeof(double) * m * 2);
+  double *r = malloc(sizeof(double) * m);
 
 
   ALG_INIT_M(m, n, expr, stats_norm_std_rand() );
  
-  ret = rrho_expression_prediction(m, n, expr, -1, index, beta);
+  ret = rrho_expression_prediction(m, n, expr, -1, index, beta, r);
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
@@ -35,7 +36,7 @@ main(int argc, char *argv[argc])
   // ====================
   ALG_INIT_M(m, n, expr, (i == m-1) ? expr[0][j] : stats_norm_std_rand() );
 
-  ret = rrho_expression_prediction(m, n, expr, -1, index, beta);
+  ret = rrho_expression_prediction(m, n, expr, -1, index, beta, r);
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
@@ -57,7 +58,7 @@ main(int argc, char *argv[argc])
   // ====================
   ALG_INIT_M(m, n, expr, (i > 0 && stats_unif_std_rand() < 0.2 ) ? expr[i-1][j] + stats_norm_rand(0, 0.1) : stats_norm_std_rand() );
  
-  ret = rrho_expression_prediction(m, n, expr, -1, index, beta);
+  ret = rrho_expression_prediction(m, n, expr, -1, index, beta, r);
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
@@ -74,7 +75,7 @@ main(int argc, char *argv[argc])
 
   // ====================
   ALG_INIT_M(m, n, expr, (i > 0 && stats_unif_std_rand() < 0.2 ) ? expr[i-1][j] + stats_norm_rand(0, 0.1) : stats_norm_std_rand() );
-  ret = rrho_expression_prediction(m, n, expr, m / 2, index, beta);
+  ret = rrho_expression_prediction(m, n, expr, m / 2, index, beta, r);
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)

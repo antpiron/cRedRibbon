@@ -1,4 +1,4 @@
-#include "rrho.h"
+#include "cRedRibbon.h"
 #include <stdlib.h>
 #include <float.h>
 #include <string.h>
@@ -69,7 +69,8 @@ has_loop(struct bitset *bs, size_t n, ssize_t index[n], ssize_t i)
 
 
 int
-rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize_t nbr_tested, ssize_t index[m], double beta[2][m])
+rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize_t nbr_tested,
+				     ssize_t index[m], double beta[2][m], double r[m])
 {
   struct mem_pool pool;
   mem_init(&pool);
@@ -134,6 +135,7 @@ rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize
       
 	double *pvalue = ols.pvalue;
 	double *loocv = ols.loocv;
+	double *r_squared = ols.r_squared;
 	// print_v(m, pvalue);
 #pragma omp critical
 	for ( size_t j = 0 ; j < m ; j++ )
@@ -154,6 +156,7 @@ rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize
 		    loocv_cur[j] =  loocv[j];
 		    beta[0][j] = betas[0][j];
 		    beta[1][j] = betas[1][j];
+		    r[j] = copysign(sqrt(r_squared[m]), betas[1][j]);
 		  }
 	      }
 	  } 
@@ -173,14 +176,15 @@ rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize
 }
 
 int
-rrho_expression_prediction(size_t m, size_t n, double mat[m][n], ssize_t nbr_tested, ssize_t index[m], double beta[2][m])
+rrho_expression_prediction(size_t m, size_t n, double mat[m][n], ssize_t nbr_tested,
+			   ssize_t index[m], double beta[2][m], double r[m])
 {
   int ret = 0;
   size_t mat_size = sizeof(double) * m * n;
   double (*Y)[m] = malloc(mat_size);
 
   alg_transpose(m, n, mat, Y);
-  ret = rrho_expression_prediction_col_major(m, n, Y, nbr_tested, index, beta);
+  ret = rrho_expression_prediction_col_major(m, n, Y, nbr_tested, index, beta, r);
 
   free(Y);
   return ret;
