@@ -1,8 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.68])
-AC_INIT([cRedRibbon], [1.0], [BUG-REPORT-ADDRESS])
+AC_PREREQ([2.71])
+AC_INIT([cRedRibbon],[1.1],[BUG-REPORT-ADDRESS])
 AM_INIT_AUTOMAKE
 AM_SILENT_RULES([yes])
 
@@ -21,7 +21,7 @@ AC_CHECK_LIB([m],[cos])
 
 ##
 
-AC_PROG_LIBTOOL
+LT_INIT
 AM_PROG_CC_C_O
 AC_DEFINE([_POSIX_C_SOURCE], [200809L], [Define the posix version])
 AC_DEFINE([_XOPEN_SOURCE], [500], [Define the XOPEN])

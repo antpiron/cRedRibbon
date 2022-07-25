@@ -140,7 +140,7 @@ rrho_expression_prediction_col_major(size_t m, size_t n, double mat[n][m], ssize
 #pragma omp critical
 	for ( size_t j = 0 ; j < m ; j++ )
 	  {
-	    if ( i != j  && pvalue[j] < (0.05d / ( nbr_tested * (m-1) ) ) ) // Bonferroni corrected m * (m-1)
+	    if ( i != j  && pvalue[j] < ((double) 0.05 / ( nbr_tested * (m-1) ) ) ) // Bonferroni corrected m * (m-1)
 	      {
 		if ( index[j] < 0 || loocv[j] < loocv_cur[j] )
 		  {
