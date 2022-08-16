@@ -22,7 +22,7 @@ main(int argc, char *argv[argc])
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
-    printf("%d\t", index[i]);
+    printf("%zu\t", index[i]);
   printf("\n");
 
   int count = 0;
@@ -40,7 +40,7 @@ main(int argc, char *argv[argc])
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
-    printf("%d\t", index[i]);
+    printf("%zd\t", index[i]);
   printf("\n");
 
   count = 0;
@@ -52,7 +52,7 @@ main(int argc, char *argv[argc])
   ERROR_UNDEF_FATAL_FMT(1 < count,  "FAIL: rrho_expression_prediction() count = %d > 1\n", count);
  
   ERROR_UNDEF_FATAL_FMT(0 != index[m-1] && m-1 != index[0],
-			"FAIL: rrho_expression_prediction() index[%zu] = %d != 0\n", m-1, index[m-1]);
+			"FAIL: rrho_expression_prediction() index[%zu] = %zd != 0\n", m-1, index[m-1]);
  
 
   // ====================
@@ -62,13 +62,13 @@ main(int argc, char *argv[argc])
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
-    printf("%d\t", index[i]);
+    printf("%zd\t", index[i]);
   printf("\n");
 
   count = 0;
   for (size_t i = 0 ; i < m ; i++)
     {
-      count += ( index[i] == -1) ? 0 : labs(i - index[i]) - 1  ;
+      count += ( index[i] == -1) ? 0 : labs((ssize_t) i - (ssize_t) index[i]) - 1  ;
     }
   ERROR_UNDEF_FATAL_FMT(count > 5,  "FAIL: rrho_expression_prediction() count = %d > 5\n", count);
 
@@ -79,13 +79,13 @@ main(int argc, char *argv[argc])
   ERROR_UNDEF_FATAL_FMT(0 != ret,  "FAIL: rrho_expression_prediction() ret = %du\n", ret);
 
   for (size_t i = 0 ; i < m ; i++)
-    printf("%d\t", index[i]);
+    printf("%zd\t", index[i]);
   printf("\n");
 
   count = 0;
   for (size_t i = 0 ; i < m ; i++)
     {
-      count += ( index[i] == -1) ? 0 : labs(i - index[i]) - 1  ;
+      count += ( index[i] == -1) ? 0 : labs((ssize_t) i - (ssize_t) index[i]) - 1  ;
     }
   ERROR_UNDEF_FATAL_FMT(count > 5,  "FAIL: half of the model, rrho_expression_prediction() count = %d > 5\n", count);
 

@@ -41,7 +41,7 @@ main(int argc, char *argv[argc])
   rrho_permutation_generic(&rrho, 0, 0, n, n, &params, &permutation, RRHO_HYPER, 1, RRHO_CLASSIC, NITER, res.pvalue, &res_perm);
   printf("shuffle pvalue = %Le, pvalue_perm = %Le, pvalue_ks = %Lf\n", res.pvalue, res_perm.pvalue, res_perm.pvalue_ks);
   ERROR_UNDEF_FATAL_FMT(res_perm.pvalue < res.pvalue,
-			"FAIL: rrho_permutation_generic(%d,%d) pvalue_perm = %.20Lf < %Lf = pvalue (pvalue_ks = %Lf)\n",
+			"FAIL: rrho_permutation_generic(%zu,%zu) pvalue_perm = %.20Lf < %Lf = pvalue (pvalue_ks = %Lf)\n",
 			n, n, res_perm.pvalue, res.pvalue, res_perm.pvalue_ks);
   
   stats_permutation_destroy(&permutation);

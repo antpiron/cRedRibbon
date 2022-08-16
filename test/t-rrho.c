@@ -38,7 +38,7 @@ test_count(size_t n, size_t index[n])
       for (size_t j = 0 ; j < n ; j++)
 	{
 	  rrho_hyper(&rrho, i, j, &res);
-	  printf("%.3f,%2ld  ", res.pvalue, res.count);
+	  printf("%.3Lf,%2ld  ", res.pvalue, res.count);
 	  if (i <= j)
 	    {
 	      ERROR_UNDEF_FATAL_FMT(res.count != i+1,
@@ -57,7 +57,7 @@ test_count(size_t n, size_t index[n])
       for (ssize_t j = n-1 ; j >= 0 ; j--)
 	{
 	  rrho_hyper(&rrho, i, j, &res);
-	  printf("%.3f,%2ld  ", res.pvalue, res.count);
+	  printf("%.3Lf,%2ld  ", res.pvalue, res.count);
 	  if (i <= j)
 	    {
 	      ERROR_UNDEF_FATAL_FMT(res.count != i+1,
@@ -75,7 +75,7 @@ test_count(size_t n, size_t index[n])
       size_t i = floor(stats_unif_rand(0, n));
       size_t j = floor(stats_unif_rand(0, n));
       rrho_hyper(&rrho, i, j, &res);
-      printf("(%2zu, %2zu) = %.3f,%2ld\n", i, j, res.pvalue, res.count);
+      printf("(%2zu, %2zu) = %.3Lf,%2ld\n", i, j, res.pvalue, res.count);
       if (i <= j)
 	{
 	  ERROR_UNDEF_FATAL_FMT(res.count != i+1,

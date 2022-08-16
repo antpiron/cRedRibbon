@@ -47,7 +47,7 @@ main(int argc, char *argv[argc])
   rrho_rectangle_min(&rrho, 0, 0, n, n, &(struct rrho_rectangle_params){ .m = n/n_i, .n = n/n_j }, RRHO_HYPER, 1, &coord);
   rrho_hyper(&rrho, coord.i, coord.j, &res);
   
-  ERROR_UNDEF_FATAL_FMT( labs(exp_i - coord.i) >= n_i || labs(exp_j - coord.j) >= n_j, 
+  ERROR_UNDEF_FATAL_FMT( labs((ssize_t) exp_i - (ssize_t) coord.i) >= n_i || labs((ssize_t) exp_j - (ssize_t) coord.j) >= n_j, 
   			"FAIL: rrho_rectangle_min(0, 0, %zu, %zu, %zu, %zu) coord = (%zu,%zu) != (%zu, %zu)\n",
 			 n, n, n_i, n_j, coord.i, coord.j, exp_i, exp_j);
   ERROR_UNDEF_FATAL_FMT(res.pvalue >= eps, 
@@ -67,7 +67,7 @@ main(int argc, char *argv[argc])
   rrho_hyper(&rrho, coord.i, coord.j, &res);
 
 
-  ERROR_UNDEF_FATAL_FMT(labs(exp_i - coord.i) >= exp_n10perc_i  || labs(exp_j - coord.j) >= exp_n10perc_j, 
+  ERROR_UNDEF_FATAL_FMT(labs((ssize_t) exp_i - (ssize_t) coord.i) >= exp_n10perc_i  || labs((ssize_t) exp_j - (ssize_t) coord.j) >= exp_n10perc_j, 
   			"FAIL: rrho_rectangle_min(0,0,%zu,%zu) coord = (%zu,%zu) != (%zu, %zu)\n",
 			n, n, coord.i, coord.j, exp_i, exp_j);
   ERROR_UNDEF_FATAL_FMT(res.pvalue >= eps, 

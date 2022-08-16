@@ -61,7 +61,7 @@ main(int argc, char *argv[argc])
 	}
       
       clock_gettime(CLOCK_REALTIME, &et);
-      diff = (et.tv_sec - st.tv_sec) + (et.tv_nsec - st.tv_nsec) / 1e9d;
+      diff = (et.tv_sec - st.tv_sec) + (et.tv_nsec - st.tv_nsec) / 1e9;
       rate = n*n / diff / step / step;
   
       printf("%12.2F sec, %12.0F rrho/sec (%Le)\n", diff, rate, pvalue);

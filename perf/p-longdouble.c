@@ -17,8 +17,8 @@ main(int argc, char *argv[argc])
   struct timespec st, et;
 
   printf("%s: \n", argv[0]);
-  printf("sizeof(double)      = %2d,  DBL_MIN = %e\n", sizeof(double), DBL_MIN);
-  printf("sizeof(long double) = %2d, LDBL_MIN = %Le \n", sizeof(long double), LDBL_MIN);
+  printf("sizeof(double)      = %2lu,  DBL_MIN = %e\n", sizeof(double), DBL_MIN);
+  printf("sizeof(long double) = %2lu, LDBL_MIN = %Le \n", sizeof(long double), LDBL_MIN);
 
   clock_gettime(CLOCK_REALTIME, &st);
 
@@ -45,7 +45,7 @@ main(int argc, char *argv[argc])
     }
       
   clock_gettime(CLOCK_REALTIME, &et);
-  diff = (et.tv_sec - st.tv_sec) + (et.tv_nsec - st.tv_nsec) / 1e9d;
+  diff = (et.tv_sec - st.tv_sec) + (et.tv_nsec - st.tv_nsec) / 1e9;
   rate = ITER / diff ;
   
   printf("long double %12.2F sec, %12.0F operation/sec (%Le)\n", diff, rate, resl);
