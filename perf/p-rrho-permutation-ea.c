@@ -35,7 +35,7 @@ main(int argc, char *argv[argc])
   ERROR_ERRNO_FATAL(NULL == file, "fopen() failed.\n");
   fprintf(file, "n.threads\tn\ttime\n");
   
-  for (size_t iter = 1 ; iter <= 32 ; iter *= 2)
+  for (size_t iter = 1 ; iter <= 64 ; iter *= 2)
     {
       size_t vec_n = iter * 5000;
       size_t vec_perc = 0.01 * vec_n;
