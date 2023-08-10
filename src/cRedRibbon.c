@@ -414,7 +414,7 @@ rrho_permutation_generic(struct rrho *rrho, size_t i, size_t j, size_t ilen, siz
 
   /* printf("End of iter\n"); */
   /* for (size_t i = 0 ; i < niter ; i++) */
-  /*   printf("%Le\t", pvalues[i]); */
+  /*   printf("%Le \t", pvalues[i]); */
   /* printf("\n"); */
 
   stats_beta_fitl(niter, pvalues, &bparams.alpha, &bparams.beta);
@@ -441,6 +441,12 @@ rrho_permutation_generic(struct rrho *rrho, size_t i, size_t j, size_t ilen, siz
     }
   
   res_perm->pvalue = pvalue * alpha / threshold;
+  // printf("p-value = %Le,  alpha = %Le, threshold = %Le, res_perm->pvalue = %Le\n", pvalue, alpha, threshold, res_perm->pvalue);
+
+  /* sometimes threshold returned by ecdf estimation is 0 making the padj infinite. Limit to bonferroni correction in this case.*/
+  if (isinf(res_perm->pvalue))
+    res_perm->pvalue = pvalue * rrho->n;
+
   if (res_perm->pvalue > 1)
     res_perm->pvalue = 1;
   
