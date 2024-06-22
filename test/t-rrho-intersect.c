@@ -37,7 +37,8 @@ main(int argc, char *argv[argc])
   value = -1;
   for (size_t i = 0 ; i < 10 ; i++)
     {
-      value = bitset_iterate(&bs_res, value);
+      ERROR_UNDEF_FATAL(bitset_iterate(&bs_res, &value) < 0,
+			"FAIL: bitset_iterate() == -1");
       ERROR_UNDEF_FATAL_FMT(value != i,
 			    "FAIL: rrho_intersect(10,10, DOWN_DOWN) vec[%zu] = %zd != %zu\n", i, value, i);
     }
@@ -52,7 +53,8 @@ main(int argc, char *argv[argc])
   value = -1;
   for (ssize_t i = 9 ; i >= 0 ; i--)
     {
-      value = bitset_iterate(&bs_res, value);
+      ERROR_UNDEF_FATAL(bitset_iterate(&bs_res, &value) < 0,
+			"FAIL: bitset_iterate() == -1");
       ERROR_UNDEF_FATAL_FMT(value != n - i - 1,
 			    "FAIL: rrho_intersect(n-10,n-10, UP_UP) vec[%zu] = %zd != %zu\n", i, value, n-i-1);
     }
